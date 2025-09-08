@@ -48,27 +48,35 @@ def main():
             if solution:
                 print("\n【解】")
 
-                # 解がリストのリストまたは辞書形式で返されるため、形式を統一して表示
-                if isinstance(solution, list) and all(isinstance(s, dict) for s in solution):
-                    for sol_dict in solution:
-                        for var in variables:
-                            print(f"{var} = {sol_dict[var]}", end=" ")
-                        print()
+                if isinstance(solution, list):
+                    # 複数解がリストのリストで返されるケース（単一未知数）
+                    if all(isinstance(s, (tuple, list)) for s in solution):
+
+                        # 各タプル/リストから値を取り出し、リストに格納
+                        flat_solutions = [s[0] for s in solution]
+                        print(f"{variables[0]} = {', '.join(map(str, flat_solutions))}")
+
+                    # 複数解がリストで返されるケース（単一未知数）
+                    elif all(not isinstance(s, (tuple, list, dict)) for s in solution):
+                        print(f"{variables[0]} = {', '.join(map(str, solution))}")
+
+                    # 複数解が辞書形式のリストで返されるケース（複数未知数）
+                    else:
+                        for sol_dict in solution:
+                            solution_str = ", ".join(f"{var} = {sol_dict[var]}" for var in variables)
+                            print(solution_str)
 
                 elif isinstance(solution, dict):
-                    for var in variables:
-                        print(f"{var} = {solution[var]}")
+                    solution_str = ", ".join(f"{var} = {solution[var]}" for var in variables)
+                    print(solution_str)
 
-                else:
-                    # 未知数が1つの場合の戻り値形式に対応
-                    for var, val in zip(variables, solution):
-                        print(f"{var} = {val}")
             else:
                 print("解は見つかりませんでした。")
             break
 
         except (ValueError, sympy.SympifyError):
-            print("入力が数式として無効であるため、正しく演算を行えませんでした。プログラムを終了します。")
+            print("入力が数式として無効であるため、正しく演算を行えませんでした。")
+            print("プログラムを終了します。")
             break
 
 if __name__ == "__main__":
