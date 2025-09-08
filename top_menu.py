@@ -1,23 +1,21 @@
-from parts import calculator
+from parts import expand
 from parts import gcd_lcm
 from parts import equation
 from parts import factorization
 from parts import prime_factorization
-from parts import expand
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
-    1: ("基礎的な数学計算", calculator.main),
+    1: ("基礎的な数学計算", expand.main),
     2: ("最大公約数・最小公倍数を求める", gcd_lcm.main),
     3: ("方程式を解く", equation.main),
     4: ("因数分解", factorization.main),
-    5: ("素因数分解", prime_factorization.main),
-    6: ("多項式の展開", expand.main)
+    5: ("素因数分解", prime_factorization.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
 def menu_select():
-    print("【数学計算ツール】")
+    print("\n【数学計算ツール】")
     print("-----------------------------------------------------------------------------------")
     # 辞書から動的にメニューを生成、5個ごとに改行
     for key, value in math_tools.items():
@@ -61,18 +59,15 @@ def main():
                 answer = int(input("次に行う操作を選択してください："))
                 # 同じ処理を再実行するために外側のループを継続
                 if answer == 1:
-                    # print()
                     break
 
                 # 最初のメニューに戻るために op_to_run をリセット
                 elif answer == 2:
-                    print()
                     op_to_run = None
                     break
 
                 elif answer == 3:
-                    print()
-                    print("See you again!")
+                    print("\nSee you again!")
                     return  # プログラムを終了
 
                 else:
