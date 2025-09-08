@@ -1,12 +1,14 @@
 from parts import calculator
 from parts import gcd_lcm
 from parts import equation
+from parts import factorization
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
     1: ("基礎的な数学計算", calculator.main),
     2: ("最大公約数・最小公倍数を求める", gcd_lcm.main),
-    3: ("方程式を解く", equation.main)
+    3: ("方程式を解く", equation.main),
+    4: ("因数分解", factorization.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
@@ -15,7 +17,7 @@ def menu_select():
     print("-----------------------------------------------------------------------------------")
     # 辞書から動的にメニューを生成、5個ごとに改行
     for key, value in math_tools.items():
-        print(f"{key}：{value[0]}", end='　' if key % 5 != 0 else '\n')
+        print(f"{key}：{value[0]}", end="　" if key % 5 != 0 else "\n")
 
     # 最後に改行が欠ける場合があるため、補完
     if len(math_tools) % 5 != 0:
