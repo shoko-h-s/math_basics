@@ -7,7 +7,14 @@ def main():
     user_input = input("計算式を入力してください：")
 
     try:
-        answer = sympy.expand(user_input)
+        expr = sympy.sympify(user_input)
+
+        # 多項式の展開
+        expanded_expr = sympy.expand(expr)
+
+        # 展開した結果を simplify でさらに簡略化
+        answer = sympy.simplify(expanded_expr)
+
         print(f"\n計算結果：{answer}")
 
     except Exception as e:
