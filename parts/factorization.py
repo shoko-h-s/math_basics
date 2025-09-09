@@ -5,7 +5,8 @@ def main():
     user_input = input("因数分解を行う式を入力：")
 
     try:
-        answer = str(sympy.factor(user_input))
+        expr = sympy.sympify(user_input)
+        answer = sympy.factor(expr)
         print(f"\n計算結果：{answer}")
 
     except (sympy.SympifyError, NameError):
