@@ -12,9 +12,15 @@ def main():
                 print("入力が空です。プログラムを終了します。\n")
                 return
 
-            num_variables = int(num_input)
-            if num_variables not in [1, 2, 3]:
-                print("半角数字 1～3 で入力し直してください。")
+            try:
+                num_variables = int(num_input)
+
+                if num_variables not in [1, 2, 3]:
+                    # ValueErrorを意図的に発生させて、まとめて捕捉
+                    raise ValueError
+
+            except ValueError:
+                print("入力内容が正しくありません。半角数字 1～3 で入力し直してください。")
                 continue
 
             equations = []
