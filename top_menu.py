@@ -5,6 +5,7 @@ from parts import factorization
 from parts import prime_factorization
 from parts import distance
 from parts import solution_formula
+from parts import square_completed
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -14,19 +15,20 @@ math_tools = {
     4: ("因数分解", factorization.main),
     5: ("素因数分解", prime_factorization.main),
     6: ("2点間の距離を求める", distance.main),
-    7: ("二次方程式の分析", solution_formula.main)
+    7: ("二次方程式の解", solution_formula.main),
+    8: ("平方完成", square_completed.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
 def menu_select():
     print("\n【数学計算ツール】")
     print("-----------------------------------------------------------------------------------")
-    # 辞書から動的にメニューを生成、4 個ごとに改行
+    # 辞書から動的にメニューを生成、5 個ごとに改行
     for key, value in math_tools.items():
-        print(f"{key}：{value[0]}", end="　" if key % 4 != 0 else "\n")
+        print(f"{key}：{value[0]}", end="　" if key % 5 != 0 else "\n")
 
     # 最後に改行が欠ける場合があるため、補完
-    if len(math_tools) % 4 != 0:
+    if len(math_tools) % 5 != 0:
         print()
 
     print("-----------------------------------------------------------------------------------")
