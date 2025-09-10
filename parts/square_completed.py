@@ -3,7 +3,7 @@ from fractions import Fraction
 
 def main():
     print("\n【平方完成】")
-    print("y = ax^2 + bx + c を、グラフを書きやすい形に変形する。")
+    print("y = ax^2 + bx + c を、グラフを書きやすいように変形する。")
 
     try:
         # 入力をeval()で評価し、分数にも対応
@@ -46,7 +46,7 @@ def main():
         else:
             y_coordinate_str = f" - {-y_coordinate}"
 
-        print(f"平方完成を行うと、y = {slope}{x_coordinate_str}{y_coordinate_str}")
+        print(f"\n平方完成を行うと、y = {slope}{x_coordinate_str}{y_coordinate_str}")
         print(f"このグラフの頂点の座標は ({x_coordinate}, {y_coordinate})")
 
     except ZeroDivisionError:
