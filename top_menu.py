@@ -1,20 +1,20 @@
 from parts import expand
 from parts import gcd_lcm
 from parts import equation
-from parts import solution_formula
 from parts import factorization
 from parts import prime_factorization
 from parts import distance
+from parts import solution_formula
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
     1: ("基礎的な数学計算", expand.main),
     2: ("最大公約数・最小公倍数を求める", gcd_lcm.main),
     3: ("方程式を解く", equation.main),
-    4: ("二次方程式の解の公式", solution_formula.main),
-    5: ("因数分解", factorization.main),
-    6: ("素因数分解", prime_factorization.main),
-    7: ("2点間の距離を求める", distance.main)
+    4: ("因数分解", factorization.main),
+    5: ("素因数分解", prime_factorization.main),
+    6: ("2点間の距離を求める", distance.main),
+    7: ("二次方程式の分析", solution_formula.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
