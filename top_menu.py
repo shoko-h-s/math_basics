@@ -6,6 +6,7 @@ from parts import prime_factorization
 from parts import distance
 from parts import solution_formula
 from parts import square_completed
+from parts import basic_statistics
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -16,7 +17,8 @@ math_tools = {
     5: ("素因数分解", prime_factorization.main),
     6: ("2点間の距離を求める", distance.main),
     7: ("二次方程式の解の公式", solution_formula.main),
-    8: ("平方完成", square_completed.main)
+    8: ("平方完成", square_completed.main),
+    9: ("データの基本統計量を求める", square_completed.main),
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
