@@ -18,7 +18,7 @@ math_tools = {
     6: ("2点間の距離を求める", distance.main),
     7: ("二次方程式の解の公式", solution_formula.main),
     8: ("平方完成", square_completed.main),
-    9: ("データの基本統計量を求める", square_completed.main),
+    9: ("データの基本統計量を求める", basic_statistics.main),
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
