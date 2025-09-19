@@ -7,6 +7,7 @@ from parts import distance
 from parts import solution_formula
 from parts import square_completed
 from parts import basic_statistics
+from parts import fd_table
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -18,13 +19,14 @@ math_tools = {
     6: ("2点間の距離を求める", distance.main),
     7: ("二次方程式の解の公式", solution_formula.main),
     8: ("平方完成", square_completed.main),
-    9: ("データの基本統計量を求める", basic_statistics.main),
+    9: ("基本統計量を求める", basic_statistics.main),
+    10: ("度数分布表から基本統計量を求める", fd_table.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
 def menu_select():
     print("\n【数学計算ツール】")
-    print("-----------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------------------------")
     # 辞書から動的にメニューを生成、5 個ごとに改行
     for key, value in math_tools.items():
         print(f"{key}：{value[0]}", end="　" if key % 5 != 0 else "\n")
@@ -33,7 +35,7 @@ def menu_select():
     if len(math_tools) % 5 != 0:
         print()
 
-    print("-----------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------------------------")
 
     # 正しいコードが入力されるまで、再入力を求め続ける
     while True:
