@@ -3,8 +3,8 @@ import collections
 def main():
     while True:
         try:
-            print("\n【素因数分解】")
-            user_input = int(input("素数判定を行う数値を入力\n（素数ではない場合は、素因数分解の結果と約数の個数・総和を計算）："))
+            print("\n素数判定を行い、素数でない場合は素因数分解を行う。")
+            user_input = int(input("判定を行う数値を入力："))
             break
         except ValueError:
             print("無効な入力です。整数を入力してください。")

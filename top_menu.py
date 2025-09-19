@@ -15,7 +15,7 @@ math_tools = {
     2: ("最大公約数・最小公倍数を求める", gcd_lcm.main),
     3: ("方程式を解く", equation.main),
     4: ("因数分解", factorization.main),
-    5: ("素因数分解", prime_factorization.main),
+    5: ("素数判定と素因数分解", prime_factorization.main),
     6: ("2点間の距離を求める", distance.main),
     7: ("二次方程式の解の公式", solution_formula.main),
     8: ("平方完成", square_completed.main),
