@@ -2,7 +2,13 @@ import statistics
 
 def main():
     print("\n【基本統計量を求める】データ群の代表値、散布度を求める")
-    data = list(map(float, input("データ群の各値を半角スペース区切りで入力：").split()))
+
+    try:
+        data = list(map(float, input("データ群の各値を半角スペース区切りで入力：").split()))
+
+    except ValueError:
+        print("\n【エラー】入力内容が正しくありません。プログラムを終了します。")
+        return
 
     # 代表値
     mean_value = statistics.mean(data)
