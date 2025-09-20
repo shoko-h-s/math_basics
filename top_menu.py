@@ -8,6 +8,7 @@ from parts import solution_formula
 from parts import square_completed
 from parts import basic_statistics
 from parts import fd_table
+from parts import fpc
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -20,7 +21,11 @@ math_tools = {
     7: ("二次方程式の解の公式", solution_formula.main),
     8: ("平方完成", square_completed.main),
     9: ("基本統計量を求める", basic_statistics.main),
-    10: ("度数分布表から基本統計量を求める", fd_table.main)
+    10: ("度数分布表から基本統計量を求める", fd_table.main),
+    11: ("階乗（!）", fpc.factorial),
+    12: ("順列（P）", fpc.perm),
+    13: ("組み合わせ（C）", fpc.comb),
+    14: ("重複組み合わせ（H）", fpc.h_comb)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
