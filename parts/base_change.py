@@ -67,10 +67,8 @@ def base_m():
                     if fractional_part_dec == 0:
                         break
 
+            # 整数部と小数部を結合
             answer = str(integer_converted) + "." + str(fractional_converted)
-
-            # 整数部と小数部を結合して表示
-            # print(f"{integer_converted}.{fractional_converted}")
 
         else:
             # 小数部がない場合は従来の処理
@@ -79,7 +77,6 @@ def base_m():
             if base == 16:
                 ans = hex(num).upper()
                 answer = ans[2:]
-                # print(ans[2:])
 
             elif 2 <= base <= 9:
                 ans = ""
@@ -87,7 +84,7 @@ def base_m():
                     ans += str(num % base)
                     num //= base
                 answer = ans[::-1]
-                # print(answer)
+
             else:
                 print("対応外の進数です。プログラムを終了します。")
 
@@ -99,3 +96,43 @@ def base_m():
         print("無効な入力です。正しい形式で入力してください。")
 
 
+# プログラム内での演算用
+def base_m_inner(base, num):
+
+    if base == 16:
+        ans = hex(num).upper()
+        base_m_answer = ans[2:]
+        # print(ans[2:])
+
+    elif 2 <= base <= 9:
+        num = int(num)
+        ans = ""
+
+        while num > 0:
+            ans += str(num % base)
+            num //= base
+
+        base_m_answer = ans[::-1]
+
+    return base_m_answer
+
+
+def base_m_calc():
+    base = int(input("\n進法を入力："))
+    a, b = input("計算する2数を、半角スペース区切りで入力：").split()
+    op = input("行う演算を演算子で指定（+, -, *, /）：")
+
+    if op == "+":
+        # 10進数に変換して計算
+        decimal_sum = int(a, base) + int(b, base)
+    elif op == "*":
+        decimal_sum = int(a, base) * int(b, base)
+    elif op == "-":
+        decimal_sum = int(a, base) - int(b, base)
+    else:
+        decimal_sum = int(a, base) // int(b, base)
+
+    answer = base_m_inner(base, decimal_sum)
+
+    print(f"\n{base}進法による計算結果")
+    print(f"{a} {op} {b} = {answer}")

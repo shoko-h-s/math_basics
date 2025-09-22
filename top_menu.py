@@ -27,8 +27,9 @@ math_tools = {
     12: ("順列（P）", fpc.perm),
     13: ("組み合わせ（C）", fpc.comb),
     14: ("重複組み合わせ（H）", fpc.h_comb),
-    15: ("M進数 → 10進数変換", base_change.base_10),
-    16: ("10進数 → M進数変換", base_change.base_m)
+    15: ("10進数 → M進数変換", base_change.base_m),
+    16: ("M進数 → 10進数変換", base_change.base_10),
+    17: ("M進数での四則演算", base_change.base_m_calc)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
