@@ -9,6 +9,7 @@ from parts import square_completed
 from parts import basic_statistics
 from parts import fd_table
 from parts import fpc
+from parts import base_change
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -25,7 +26,8 @@ math_tools = {
     11: ("階乗（!）", fpc.factorial),
     12: ("順列（P）", fpc.perm),
     13: ("組み合わせ（C）", fpc.comb),
-    14: ("重複組み合わせ（H）", fpc.h_comb)
+    14: ("重複組み合わせ（H）", fpc.h_comb),
+    15: ("10進数への変換", base_change.base_10)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
