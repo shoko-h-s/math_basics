@@ -1,7 +1,7 @@
 def base_10():
     try:
         base = int(input("\n変換元の進数を入力（～16進数に対応可）： "))
-        num = input("10進数に変換する値を入力：")
+        num = input("10進数に変換する値を入力（小数にも対応可能）：")
 
         # 入力値に小数部が含まれるか確認
         if '.' in num:
@@ -30,7 +30,7 @@ def base_10():
 def base_m():
     try:
         base = int(input("\n変換先の進数を入力（～9進数、および16進数に対応可）： "))
-        num_str = input("変換する値を入力：")
+        num_str = input("変換する値を入力（小数にも対応可能）：")
 
         if '.' in num_str:
             integer_part_str, fractional_part_str = num_str.split('.')
