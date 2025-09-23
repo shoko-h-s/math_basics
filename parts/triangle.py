@@ -1,3 +1,4 @@
+import sympy
 from fractions import Fraction
 
 def main():
