@@ -12,6 +12,7 @@ from parts import fpc
 from parts import base_change
 from parts import poly_div
 from parts import div_point
+from parts import triangle
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -33,7 +34,8 @@ math_tools = {
     16: ("M進数 → 10進数変換", base_change.base_10),
     17: ("M進数での四則演算", base_change.base_m_calc),
     18: ("多項式の割り算", poly_div.main),
-    19: ("平面上の内分点・中点・外分点を求める", div_point.main)
+    19: ("平面上の内分点・中点・外分点を求める", div_point.main),
+    20: ("三角形の重心を求める", triangle.gravity_point)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
