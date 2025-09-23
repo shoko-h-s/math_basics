@@ -11,6 +11,7 @@ from parts import fd_table
 from parts import fpc
 from parts import base_change
 from parts import poly_div
+from parts import div_point
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -31,7 +32,8 @@ math_tools = {
     15: ("10進数 → M進数変換", base_change.base_m),
     16: ("M進数 → 10進数変換", base_change.base_10),
     17: ("M進数での四則演算", base_change.base_m_calc),
-    18: ("多項式の割り算", poly_div.main)
+    18: ("多項式の割り算", poly_div.main),
+    19: ("平面上の内分点・中点・外分点を求める", div_point.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
