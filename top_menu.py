@@ -34,10 +34,11 @@ math_tools = {
     16: ("M進数での四則演算", base_change.base_m_calc),
     17: ("多項式の割り算", poly_div.main),
     18: ("平面上の内分点・中点・外分点を求める", div_point.main),
-    19: ("三角形の重心を求める", triangle.gravity_point),
-    20: ("2点間の距離を求める", distance.p2),
-    21: ("点と直線の距離を求める", distance.pl),
-    22: ('平行な2直線間の距離', distance.ll)
+    19: ("2点間の距離を求める", distance.p2),
+    20: ("点と直線の距離を求める", distance.pl),
+    21: ('平行な2直線間の距離', distance.ll),
+    22: ("三角形の形状・面積を調べる", triangle.main),
+    23: ("三角形の重心を求める", triangle.gravity_point)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
