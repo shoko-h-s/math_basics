@@ -10,6 +10,7 @@ from parts import basic_statistics
 from parts import fd_table
 from parts import fpc
 from parts import base_change
+from parts import poly_div
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -29,7 +30,8 @@ math_tools = {
     14: ("重複組み合わせ（H）", fpc.h_comb),
     15: ("10進数 → M進数変換", base_change.base_m),
     16: ("M進数 → 10進数変換", base_change.base_10),
-    17: ("M進数での四則演算", base_change.base_m_calc)
+    17: ("M進数での四則演算", base_change.base_m_calc),
+    18: ("多項式の割り算", poly_div.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
@@ -72,7 +74,7 @@ def main():
 
         while True:
             # ユーザーに次の操作を尋ねる
-            print("\n1: 同じ処理を再度繰り返す　2: メニューに戻る　3: プログラムを終了する")
+            print("\n1: 値を変更して同じ処理を再度繰り返す　2: メニューに戻る　3: プログラムを終了する")
 
             try:
                 answer = int(input("次に行う操作を選択してください："))
