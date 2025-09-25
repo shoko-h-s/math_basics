@@ -13,6 +13,7 @@ from parts import base_change
 from parts import poly_div
 from parts import div_point
 from parts import triangle
+from parts import tri_ratio
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -38,7 +39,8 @@ math_tools = {
     20: ("点と直線の距離を求める", distance.pl),
     21: ('平行な2直線間の距離', distance.ll),
     22: ("三角形の形状・面積を調べる", triangle.main),
-    23: ("三角形の重心を求める", triangle.gravity_point)
+    23: ("三角形の重心を求める", triangle.gravity_point),
+    24: ("三角比の値を調べる", tri_ratio.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
