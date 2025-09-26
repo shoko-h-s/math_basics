@@ -1,10 +1,12 @@
 import sympy
 
 def main():
-    print("\n【基礎的な数学計算】")
-    print("このプログラムでは加減乗除・分数の計算・有理化・多項式の展開が行えます。")
-    print("√2 は、sqrt(2) のように表記してください。")
-    user_input = input("計算式を入力してください：")
+    print("\n【基礎的な数学計算】このプログラムでは簡単な数学演算（加減乗除・分数の計算・有理化・多項式の展開等）が行えます。")
+    print("\n計算式を入力する際は、以下の入力例を参考にしてください。")
+    print("無理数：√2 → sqrt(2)")
+    print("対数：log 2 4 → log(4,2)\n")
+
+    user_input = input("計算式を入力： ")
 
     try:
         expr = sympy.sympify(user_input)
