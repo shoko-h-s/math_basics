@@ -44,7 +44,7 @@ math_tools = {
     23: ("三角形の重心を求める", triangle.gravity_point),
     24: ("三角比の値を調べる", tri_ratio.main),
     25: ("三角方程式を解く", tri_equation.main),
-    26: ("指数方程式・対数方程式を解く", expo_equation.main)
+    26: ("指数方程式を解く", expo_equation.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
