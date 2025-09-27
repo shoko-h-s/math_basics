@@ -1,12 +1,13 @@
 import sympy
 
+
 def main():
     while True:
         try:
             print("\n【方程式を解く】")
 
             # ユーザーに解く方程式の未知数の数を尋ねる
-            num_input = input("解く方程式の未知数の数を入力してください (1～3): ")
+            num_input = input("解く方程式の未知数の数を入力(1～3)： ")
 
             if num_input.strip() == '':
                 print("入力が空です。プログラムを終了します。\n")
@@ -24,41 +25,57 @@ def main():
                 continue
 
             equations = []
+            all_symbols = set()
 
             # 未知数の数に応じて、方程式の入力回数を制御
             for i in range(num_variables):
                 # 未知数が1つの場合はメッセージを変更
-                prompt = "方程式を入力してください（右辺を 0 とした状態で入力）: " if num_variables == 1 else f"方程式 {i + 1} を入力してください (右辺を 0 とした状態で入力): "
-                eq_str = input(prompt)
-                equations.append(eq_str)
+                prompt = "方程式の情報を入力\n左辺： " if num_variables == 1 else f"方程式 {i + 1} の情報を入力\n左辺： "
+                left_side_str = input(prompt)
+                right_side_str = input("右辺： ")
+                print()
 
-            # 入力された文字列からSymPyの式オブジェクトに変換
-            sym_equations = [sympy.sympify(eq) for eq in equations]
+                # 入力が空の場合はループを抜ける
+                if not left_side_str.strip() or not right_side_str.strip():
+                    print("入力が空です。プログラムを終了します。\n")
+                    return
 
-            # 自動で変数を検出
-            variables_set = set()
-            for eq in sym_equations:
-                variables_set.update(eq.free_symbols)
+                try:
+                    # 入力された文字列からSymPyの式オブジェクトに変換
+                    left_side = sympy.sympify(left_side_str)
+                    right_side = sympy.sympify(right_side_str)
+
+                    # 方程式を「左辺 - 右辺 = 0」の形に変換
+                    equation = left_side - right_side
+                    equations.append(equation)
+
+                    # 変数を収集
+                    all_symbols.update(equation.free_symbols)
+
+                except sympy.SympifyError:
+                    print("入力が数式として無効です。プログラムを終了します。\n")
+                    return
 
             # 変数をソートしてリストに変換（アルファベット順など）
-            variables = sorted(list(variables_set), key=lambda x: str(x))
+            variables = sorted(list(all_symbols), key=lambda x: str(x))
 
+            # 検出された変数の数が指定した未知数の数と一致するか確認
             if len(variables) != num_variables:
-                print(f"入力された方程式で検出された変数の数（{len(variables)}）が、指定した未知数の数（{num_variables}）と一致しません。")
+                print(
+                    f"入力された方程式で検出された変数の数（{len(variables)}）が、指定した未知数の数（{num_variables}）と一致しません。")
                 print("プログラムを終了します。")
                 break
 
             # 方程式を解く
-            solution = sympy.solve(sym_equations, variables)
+            solution = sympy.solve(equations, variables)
 
             if solution:
-                print("\n【解】")
+                print("【解】")
 
+                # 解の出力形式を元のコードの通りに調整
                 if isinstance(solution, list):
                     # 複数解がリストのリストで返されるケース（単一未知数）
                     if all(isinstance(s, (tuple, list)) for s in solution):
-
-                        # 各タプル/リストから値を取り出し、リストに格納
                         flat_solutions = [s[0] for s in solution]
                         print(f"{variables[0]} = {', '.join(map(str, flat_solutions))}")
 
@@ -78,12 +95,19 @@ def main():
 
             else:
                 print("解は見つかりませんでした。")
+
+            # 成功した場合はループを抜ける
             break
 
         except (ValueError, sympy.SympifyError):
             print("入力が数式として無効であるため、正しく演算を行えませんでした。")
             print("プログラムを終了します。")
             break
+        except Exception as e:
+            print(f"予期せぬエラーが発生しました: {e}")
+            print("プログラムを終了します。")
+            break
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()
