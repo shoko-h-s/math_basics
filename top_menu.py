@@ -16,6 +16,7 @@ from parts import triangle
 from parts import tri_ratio
 from parts import tri_equation
 from parts import expo_equation
+from parts import integrate
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -44,7 +45,8 @@ math_tools = {
     23: ("三角形の重心を求める", triangle.gravity_point),
     24: ("三角比の値を調べる", tri_ratio.main),
     25: ("三角方程式を解く", tri_equation.main),
-    26: ("指数方程式・対数方程式を解く", expo_equation.main)
+    26: ("指数方程式・対数方程式を解く", expo_equation.main),
+    27: ("積分を行う", integrate.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
