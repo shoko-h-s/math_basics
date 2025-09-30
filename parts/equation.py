@@ -7,7 +7,7 @@ def main():
             print("\n【方程式を解く】")
 
             # ユーザーに解く方程式の未知数の数を尋ねる
-            num_input = input("解く方程式の未知数の数を入力(1～3)： ")
+            num_input = input("解く方程式の未知数の数を入力： ")
 
             if num_input.strip() == '':
                 print("入力が空です。プログラムを終了します。\n")
@@ -16,12 +16,12 @@ def main():
             try:
                 num_variables = int(num_input)
 
-                if num_variables not in [1, 2, 3]:
+                if num_variables <= 0:
                     # ValueErrorを意図的に発生させて、まとめて捕捉
                     raise ValueError
 
             except ValueError:
-                print("入力内容が正しくありません。半角数字 1～3 で入力し直してください。")
+                print("入力内容が正しくありません。1 以上の半角数字で入力し直してください。")
                 continue
 
             equations = []
