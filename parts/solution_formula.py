@@ -23,8 +23,10 @@ def main():
         elif d == 0:
             print("\nこの方程式は、実数解を 1 つ持つ（重解となる）。")
             print(f"【計算結果】x = {x1}")
+
         else:
-            print("この方程式は、実数解を持たない。")
+            print("\nこの方程式は、虚数解を 2 つ持つ。")
+            print(f"【計算結果】x = {x1}, {x2}")
 
     except ValueError:
         print(f"入力内容が正しくありません。プログラムを終了します。")
