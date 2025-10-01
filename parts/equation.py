@@ -72,26 +72,33 @@ def main():
             if solution:
                 print("【解】")
 
-                # 解の出力形式を元のコードの通りに調整
-                if isinstance(solution, list):
-                    # 複数解がリストのリストで返されるケース（単一未知数）
-                    if all(isinstance(s, (tuple, list)) for s in solution):
-                        flat_solutions = [s[0] for s in solution]
-                        print(f"{variables[0]} = {', '.join(map(str, flat_solutions))}")
+                # 解が辞書形式のリスト（複数未知数の複数解）で返された場合
+                if isinstance(solution, list) and all(isinstance(s, dict) for s in solution):
+                    for sol_dict in solution:
+                        solution_str = ", ".join(f"{var} = {sol_dict[var]}" for var in variables)
+                        print(solution_str)
 
-                    # 複数解がリストで返されるケース（単一未知数）
-                    elif all(not isinstance(s, (tuple, list, dict)) for s in solution):
-                        print(f"{variables[0]} = {', '.join(map(str, solution))}")
+                # 解がタプルのリスト（複数未知数の複数解）で返された場合
+                elif isinstance(solution, list) and all(isinstance(s, (tuple, list)) for s in solution):
+                    for sol_tuple in solution:
+                        # 変数名と解の値を zip で組み合わせて文字列を生成
+                        solution_str = ", ".join(f"{var} = {val}" for var, val in zip(variables, sol_tuple))
+                        print(solution_str)
 
-                    # 複数解が辞書形式のリストで返されるケース（複数未知数）
-                    else:
-                        for sol_dict in solution:
-                            solution_str = ", ".join(f"{var} = {sol_dict[var]}" for var in variables)
-                            print(solution_str)
-
+                # 解が単一の辞書で返された場合（複数未知数の単一解）
                 elif isinstance(solution, dict):
                     solution_str = ", ".join(f"{var} = {solution[var]}" for var in variables)
                     print(solution_str)
+
+                # その他の単一未知数の複数解
+                elif isinstance(solution, list):
+                    # リスト内の要素がさらにタプル/リストの場合（例: [[x1], [x2], ...]）
+                    if all(isinstance(s, (tuple, list)) for s in solution):
+                        flat_solutions = [s[0] for s in solution]
+                        print(f"{variables[0]} = {', '.join(map(str, flat_solutions))}")
+                    # リスト内の要素が直接解の値の場合（例: [x1, x2, ...]）
+                    else:
+                        print(f"{variables[0]} = {', '.join(map(str, solution))}")
 
             else:
                 print("解は見つかりませんでした。")
