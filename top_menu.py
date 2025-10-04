@@ -17,7 +17,7 @@ from parts import tri_ratio
 from parts import tri_equation
 from parts import expo_equation
 from parts import integrate
-from parts import inner_product
+from parts import vector
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -48,7 +48,7 @@ math_tools = {
     25: ("三角方程式を解く", tri_equation.main),
     26: ("指数方程式・対数方程式を解く", expo_equation.main),
     27: ("積分を行う", integrate.main),
-    28: ("ベクトルの成分から内積を求める", inner_product.main)
+    28: ("2つのベクトルを成分から分析", vector.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
