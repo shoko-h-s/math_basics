@@ -1,5 +1,7 @@
+import sympy
+
 def main():
-    print("【度数分布表から基本統計量を求める】代表値（平均値、中央値、最頻値）")
+    print("\n【度数分布表を用いた分析】")
 
     try:
         class_value = list(map(float, input("階級値を半角スペース区切りで入力：").split()))
@@ -49,10 +51,23 @@ def main():
     max_index = frequency.index(max_class_value)
     mode_value = class_value[max_index]
 
+    # 分散・標準偏差
+    tmp = 0
+
+    for i in range(len(class_value)):
+        tmp += frequency[i] * (class_value[i] - mean_value)**2
+
+    v = tmp / num
+    s = sympy.sqrt(v)
+
     print("\n【代表値】")
     print(f"平均値：{mean_value}")
     print(f"中央値：{median_value}")
     print(f"最頻値：{mode_value}")
+
+    print("\n【散布度】")
+    print(f"分散：{v}")
+    print(f"標準偏差：{s}")
 
 
 if __name__ == "__main__":
