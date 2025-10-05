@@ -19,6 +19,7 @@ from parts import expo_equation
 from parts import integrate
 from parts import vector
 from parts import probability
+from parts import b_distribution
 
 # キーはオプション番号、値は実行する関数または処理のタプル
 math_tools = {
@@ -50,7 +51,8 @@ math_tools = {
     26: ("2つのベクトルを成分から分析", vector.main),
     27: ("基本統計量を求める", basic_statistics.main),
     28: ("確率分布表を用いた分析", probability.main),
-    29: ("度数分布表を用いた分析", fd_table.main)
+    29: ("度数分布表を用いた分析", fd_table.main),
+    30: ("二項分布の分析", b_distribution.main)
 }
 
 # メイン処理: ユーザーからオプション番号を選択させる
